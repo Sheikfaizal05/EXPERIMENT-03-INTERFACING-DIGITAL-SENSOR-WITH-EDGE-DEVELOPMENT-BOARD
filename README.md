@@ -2,10 +2,10 @@
  
 ---
 
-### **NAME:**  
-### **DEPARTMENT:**  
-### **ROLL NO:**  
-### **DATE OF EXPERIMENT:**  
+### **NAME: SHEIK FAIZAL S**  
+### **DEPARTMENT: AIML**  
+### **ROLL NO: 212224240151**  
+### **DATE OF EXPERIMENT: 24/09/2025**  
 
 ---
 
@@ -66,13 +66,36 @@ The sensor measures **temperature using a thermistor** and **humidity using a ca
 ---
 
 ## **PROGRAM (MicroPython)**  
-``` ```
+```
+import machine
+import dht
+import time
 
----
+# Define DHT sensor pin
+dht_pin = machine.Pin(28)
+dht_sensor = dht.DHT22(dht_pin)
+
+while True:
+    try:
+        # Measure temperature and humidity
+        dht_sensor.measure()
+        temperature_celsius = dht_sensor.temperature()
+        humidity_percent = dht_sensor.humidity()
+
+        # Print results
+        print("Temperature: {:.2f} °C".format(temperature_celsius))
+        print("Humidity: {:.2f} %".format(humidity_percent))
+
+    except Exception as e:
+        print("Error reading DHT:", str(e))
+
+    time.sleep(1)  # delay 1 second between readings
+```
 
 ## **OUTPUT:**  
- 
+ The serial monitor displays the real-time temperature and humidity values as shown below:
 ---
+<img width="308" height="421" alt="image" src="https://github.com/user-attachments/assets/cad107b0-d6e5-4da6-834d-748cdb8a5765" />
 
   
 ---
